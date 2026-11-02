@@ -22,7 +22,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-3">
         <div>
           <p className="font-display text-3xl">Casas de la Luz</p>
-          <p className="mt-3 text-sm opacity-70">Private villas in Chiclana & Roche, Costa de la Luz.</p>
+          <p className="mt-3 text-sm opacity-70">Private holidays in Chiclana & Roche, Costa de la Luz.</p>
         </div>
         <div className="text-sm opacity-80">
           <p className="eyebrow mb-3 text-gold">Concierge</p>

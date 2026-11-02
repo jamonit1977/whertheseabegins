@@ -6,9 +6,9 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Request a Stay — Casas de la Luz" },
-      { name: "description", content: "Speak with our concierge to reserve a private villa in Chiclana or Roche." },
+      { name: "description", content: "Tell your personal host how you like to summer, and we will compose your stay on the Costa de la Luz." },
       { property: "og:title", content: "Request a Stay — Casas de la Luz" },
-      { property: "og:description", content: "Reserve a private villa with pool and gardens on the Costa de la Luz." },
+      { property: "og:description", content: "A privately arranged Andalusian summer for families and couples, with dedicated personal service." },
     ],
   }),
   component: Contact,
