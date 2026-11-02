@@ -4,6 +4,8 @@ import beach from "@/assets/lifestyle-beach.jpg";
 import dining from "@/assets/lifestyle-dining.jpg";
 import sea from "@/assets/lifestyle-sea.jpg";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
+import { Button } from "@/components/ui/button";
+import { seasonalGuide } from "@/lib/seasonal-guide";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -12,6 +14,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Sun, sea and slow days on the Costa de la Luz, privately arranged for families and couples with a devoted personal host." },
       { property: "og:title", content: "Casas de la Luz — Private Holidays in Chiclana & Roche" },
       { property: "og:description", content: "The art of the Andalusian summer, privately arranged with a devoted personal host on the Costa de la Luz." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -102,6 +106,32 @@ function Index() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="seasonal-guide" className="mx-auto max-w-7xl px-6 py-24 md:py-32" aria-labelledby="seasonal-heading">
+        <div className="grid gap-6 md:grid-cols-2 md:items-end">
+          <div>
+            <p className="eyebrow text-accent">General rental price guide · Per {seasonalGuide.rateUnit}</p>
+            <h2 id="seasonal-heading" className="mt-4 text-4xl md:text-6xl">A season for every summer.</h2>
+          </div>
+          <p className="max-w-lg leading-relaxed text-muted-foreground md:justify-self-end">A sense of the Costa de la Luz throughout the year. Nightly rental prices and exact season dates are available on enquiry.</p>
+        </div>
+        <div className="mt-14 grid gap-10 md:grid-cols-3">
+          {seasonalGuide.seasons.map((season) => (
+            <article key={season.name} className="border-t border-foreground/20 pt-6">
+              <p className="eyebrow text-accent">{season.name}</p>
+              <h3 className="mt-4 text-3xl">{season.mood}</h3>
+              <p className="mt-4 min-h-16 text-sm leading-relaxed text-muted-foreground">{season.description}</p>
+              <p className="mt-8 font-display text-2xl">Nightly rate on enquiry</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-6 border-t pt-8">
+          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">General guidance only — no individual properties are advertised. An enquiry is not a reservation or confirmation of availability.</p>
+          <Button asChild size="lg" className="eyebrow h-auto w-full max-w-full whitespace-normal rounded-none px-6 py-4 text-center sm:w-auto">
+            <Link to="/contact">Enquire about nightly rates</Link>
+          </Button>
         </div>
       </section>
 

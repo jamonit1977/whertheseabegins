@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the general seasonal guide in a browser-safe data module used by the homepage, with no individual property records, so pricing guidance remains separate from listings.

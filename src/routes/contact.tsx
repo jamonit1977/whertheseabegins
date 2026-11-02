@@ -9,6 +9,8 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Tell your personal host how you like to summer, and we will compose your stay on the Costa de la Luz." },
       { property: "og:title", content: "Request a Stay — Casas de la Luz" },
       { property: "og:description", content: "A privately arranged Andalusian summer for families and couples, with dedicated personal service." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contact,
