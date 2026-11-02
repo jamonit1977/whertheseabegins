@@ -5,7 +5,7 @@ import dining from "@/assets/lifestyle-dining.jpg";
 import sea from "@/assets/lifestyle-sea.jpg";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { Button } from "@/components/ui/button";
-import { seasonalGuide } from "@/lib/seasonal-guide";
+import { seasonalGuide, formatNightlyRate } from "@/lib/seasonal-guide";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -115,7 +115,7 @@ function Index() {
             <p className="eyebrow text-accent">General rental price guide · Per {seasonalGuide.rateUnit}</p>
             <h2 id="seasonal-heading" className="mt-4 text-4xl md:text-6xl">A season for every summer.</h2>
           </div>
-          <p className="max-w-lg leading-relaxed text-muted-foreground md:justify-self-end">A sense of the Costa de la Luz throughout the year. Nightly rental prices and exact season dates are available on enquiry.</p>
+          <p className="max-w-lg leading-relaxed text-muted-foreground md:justify-self-end">A sense of the Costa de la Luz throughout the year. Exact season dates and availability are available on enquiry.</p>
         </div>
         <div className="mt-14 grid gap-10 md:grid-cols-3">
           {seasonalGuide.seasons.map((season) => (
@@ -123,7 +123,7 @@ function Index() {
               <p className="eyebrow text-accent">{season.name}</p>
               <h3 className="mt-4 text-3xl">{season.mood}</h3>
               <p className="mt-4 min-h-16 text-sm leading-relaxed text-muted-foreground">{season.description}</p>
-              <p className="mt-8 font-display text-2xl">Nightly rate on enquiry</p>
+              <p className="mt-8 font-display text-2xl">{formatNightlyRate(season.nightlyRate)}</p>
             </article>
           ))}
         </div>

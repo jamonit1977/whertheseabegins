@@ -6,7 +6,11 @@ describe("general seasonal price guide", () => {
     expect(seasonalGuide.rateUnit).toBe("night");
   });
 
-  it("does not invent prices before the owner supplies them", () => {
-    expect(seasonalGuide.seasons.map((season) => season.nightlyRate)).toEqual([null, null, null]);
+  it("shows the owner-supplied nightly price ranges", () => {
+    expect(seasonalGuide.seasons.map((season) => season.nightlyRate)).toEqual([
+      { min: 100, max: 150 },
+      { min: 150, max: 250 },
+      { min: 200, max: 300 },
+    ]);
   });
 });
