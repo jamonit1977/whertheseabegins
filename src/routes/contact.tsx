@@ -1,11 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { villas } from "@/lib/villas";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 
 export const Route = createFileRoute("/contact")({
-  validateSearch: (s: Record<string, unknown>): { villa?: string } =>
-    typeof s["villa"] === "string" ? { villa: s["villa"] } : {},
   head: () => ({
     meta: [
       { title: "Request a Stay — Casas de la Luz" },
@@ -20,7 +17,6 @@ export const Route = createFileRoute("/contact")({
 const field = "w-full border-0 border-b bg-transparent py-3 outline-none focus:border-accent";
 
 function Contact() {
-  const { villa } = Route.useSearch();
   const [sent, setSent] = useState(false);
   return (
     <div className="min-h-screen">
@@ -35,10 +31,6 @@ function Contact() {
           <form className="mt-14 grid gap-8 md:grid-cols-2" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
             <input required placeholder="Full name" className={field} />
             <input required type="email" placeholder="Email" className={field} />
-            <select defaultValue={villa ?? ""} className={field}>
-              <option value="">Any villa</option>
-              {villas.map((v) => <option key={v.slug} value={v.slug}>{v.name} — {v.location}</option>)}
-            </select>
             <input type="number" min={1} placeholder="Guests" className={field} />
             <input type="date" aria-label="Arrival" className={field} />
             <input type="date" aria-label="Departure" className={field} />

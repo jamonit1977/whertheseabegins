@@ -9,7 +9,6 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           Casas de la Luz
         </Link>
         <nav className="eyebrow flex gap-6 md:gap-10">
-          <Link to="/" hash="villas" className="hover:text-gold">Villas</Link>
           <Link to="/contact" className="hover:text-gold">Enquire</Link>
         </nav>
       </div>

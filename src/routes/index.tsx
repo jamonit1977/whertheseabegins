@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import hero from "@/assets/hero.jpg";
-import { villas } from "@/lib/villas";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 
 export const Route = createFileRoute("/")({
@@ -35,8 +34,7 @@ function Index() {
             Five private villas.<br /><em>One devoted host.</em>
           </h1>
           <div className="fade-up mt-10 flex flex-wrap gap-4">
-            <a href="#villas" className="eyebrow bg-ink-foreground px-8 py-4 text-ink transition hover:bg-gold">Discover the villas</a>
-            <Link to="/contact" className="eyebrow border border-ink-foreground/60 px-8 py-4 transition hover:border-gold hover:text-gold">Enquire</Link>
+            <Link to="/contact" className="eyebrow bg-ink-foreground px-8 py-4 text-ink transition hover:bg-gold">Enquire</Link>
           </div>
         </div>
       </section>
@@ -47,26 +45,6 @@ function Index() {
           Each chalet stands within its own walled gardens, with a private swimming pool, absolute discretion and
           a team that knows your name before you arrive.
         </p>
-      </section>
-
-      <section id="villas" className="mx-auto max-w-7xl space-y-24 px-6 pb-32 md:space-y-36">
-        {villas.map((v, i) => (
-          <article key={v.slug} className={`grid items-center gap-8 md:grid-cols-12 md:gap-16`}>
-            <Link to="/villas/$slug" params={{ slug: v.slug }} className={`group overflow-hidden md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
-              <img src={v.image} alt={v.name} loading="lazy" width={1280} height={960} className="aspect-[4/3] w-full object-cover transition duration-[1500ms] group-hover:scale-105" />
-            </Link>
-            <div className="md:col-span-5">
-              <p className="eyebrow text-accent">0{i + 1} — {v.location}</p>
-              <h2 className="mt-4 text-4xl md:text-6xl">{v.name}</h2>
-              <p className="mt-3 font-display text-xl italic text-muted-foreground">{v.tagline}</p>
-              <p className="mt-6 leading-relaxed text-muted-foreground">{v.description}</p>
-              <p className="eyebrow mt-6">{v.bedrooms} bedrooms · {v.guests} guests · garden · pool</p>
-              <Link to="/villas/$slug" params={{ slug: v.slug }} className="eyebrow mt-8 inline-block border-b border-foreground pb-1 hover:border-accent hover:text-accent">
-                View the villa
-              </Link>
-            </div>
-          </article>
-        ))}
       </section>
 
       <section className="bg-secondary py-24 md:py-32">
