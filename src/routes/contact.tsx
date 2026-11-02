@@ -4,9 +4,8 @@ import { villas } from "@/lib/villas";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 
 export const Route = createFileRoute("/contact")({
-  validateSearch: (s: Record<string, unknown>): { villa?: string } => ({
-    villa: typeof s.villa === "string" ? s.villa : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): { villa?: string } =>
+    typeof s["villa"] === "string" ? { villa: s["villa"] } : {},
   head: () => ({
     meta: [
       { title: "Request a Stay — Casas de la Luz" },
