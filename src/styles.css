@@ -33,6 +33,7 @@
   --color-gold: var(--gold);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
+  --color-header-foreground: var(--header-foreground);
 }
 
 :root {
@@ -59,6 +60,7 @@
   --gold: oklch(0.72 0.11 75);
   --ink: oklch(0.18 0.012 60);
   --ink-foreground: oklch(0.96 0.015 85);
+  --header-foreground: oklch(1 0 0);
   --gradient-veil: linear-gradient(180deg, oklch(0.15 0.01 60 / 0.35) 0%, oklch(0.15 0.01 60 / 0.15) 40%, oklch(0.15 0.01 60 / 0.75) 100%);
 }
 
