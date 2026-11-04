@@ -6,15 +6,15 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   return (
     <header className={`${overlay ? "absolute inset-x-0 top-0 z-20" : "border-b"} ${tone}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <nav className="eyebrow flex gap-6 md:gap-10">
+          <Link to="/contact" className="hover:text-gold">Enquire</Link>
+        </nav>
         <Link to="/" className="flex items-center gap-3">
           <img src={logo.url} alt="Where the sea begins logo" className="h-12 w-12" />
           <span className="font-display text-2xl tracking-wide">
             Where the sea begins
           </span>
         </Link>
-        <nav className="eyebrow flex gap-6 md:gap-10">
-          <Link to="/contact" className="hover:text-gold">Enquire</Link>
-        </nav>
       </div>
     </header>
   );
