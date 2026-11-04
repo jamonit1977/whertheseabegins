@@ -5,9 +5,9 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Request a Stay — Casas de la Luz" },
+      { title: "Request a Stay — Where the sea begins" },
       { name: "description", content: "Tell your personal host how you like to summer, and we will compose your stay on the Costa de la Luz." },
-      { property: "og:title", content: "Request a Stay — Casas de la Luz" },
+      { property: "og:title", content: "Request a Stay — Where the sea begins" },
       { property: "og:description", content: "A privately arranged Andalusian summer for families and couples, with dedicated personal service." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -10,9 +10,9 @@ import { seasonalGuide, formatNightlyRate } from "@/lib/seasonal-guide";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Casas de la Luz — Private Holidays in Chiclana & Roche" },
+      { title: "Where the sea begins — Private Holidays in Chiclana & Roche" },
       { name: "description", content: "Sun, sea and slow days on the Costa de la Luz, privately arranged for families and couples with a devoted personal host." },
-      { property: "og:title", content: "Casas de la Luz — Private Holidays in Chiclana & Roche" },
+      { property: "og:title", content: "Where the sea begins — Private Holidays in Chiclana & Roche" },
       { property: "og:description", content: "The art of the Andalusian summer, privately arranged with a devoted personal host on the Costa de la Luz." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
