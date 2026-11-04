@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the general seasonal guide in a browser-safe data module used by the homepage, with no individual property records, so pricing guidance remains separate from listings.
+- Use the transparent white line-art logo variant in photo-overlay headers and retain the original on light backgrounds so the sketch stays legible.

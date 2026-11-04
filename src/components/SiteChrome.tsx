@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/where_the_sea_begins_logo.png.asset.json";
+import whiteLogo from "@/assets/where-the-sea-begins-white.png";
 
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   const tone = overlay ? "bg-ink/85 text-header-foreground" : "text-foreground";
@@ -10,7 +11,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           <Link to="/contact" className="border-b border-current py-2 transition hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current">Enquire</Link>
         </nav>
         <Link to="/" className="flex min-w-0 items-center gap-3 md:gap-4">
-          <img src={logo.url} alt="Where the sea begins logo" className={`h-18 w-18 shrink-0 object-contain md:h-24 md:w-24 ${overlay ? "brightness-0 invert" : ""}`} />
+          <img src={overlay ? whiteLogo : logo.url} alt="Where the sea begins logo" className="h-18 w-18 shrink-0 object-contain md:h-24 md:w-24" />
           <span className="max-w-36 font-display text-xl leading-tight sm:max-w-none sm:text-2xl md:text-3xl">
             Where the sea begins
           </span>
