@@ -7,3 +7,5 @@
 - [x] Add a general seasonal guide using nightly pricing without identifying properties
 - [x] Fill in seasonal nightly amounts — low €100–150, mid €150–250, high €200–300
 - [ ] Add exact season date ranges — still waiting for the owner's dates
+- [x] Season-by-season calendar with what's going on in the area
+- [x] Area guide page (Chiclana, Roche, La Barrosa, Sancti Petri and nearby)
