@@ -1,6 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { areaCalendar } from "@/lib/area-calendar";
+import winter from "@/assets/season-winter.jpg";
+import spring from "@/assets/season-spring.jpg";
+import summer from "@/assets/lifestyle-beach.jpg";
+import autumn from "@/assets/season-autumn.jpg";
+
+const seasons = [
+  { name: "Winter", photo: winter, months: ["January", "February", "December"] },
+  { name: "Spring", photo: spring, months: ["March", "April", "May"] },
+  { name: "Summer", photo: summer, months: ["June", "July", "August"] },
+  { name: "Autumn", photo: autumn, months: ["September", "October", "November"] },
+];
 
 export const Route = createFileRoute("/calendar")({
   head: () => ({
@@ -26,15 +37,25 @@ function CalendarPage() {
         <p className="mt-6 max-w-2xl leading-relaxed text-muted-foreground">
           A month-by-month picture of Chiclana, Roche and the Costa de la Luz. Festival dates change each year — we'll confirm them when you enquire.
         </p>
-        <div className="mt-16 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {areaCalendar.map((m) => (
-            <article key={m.month} className="border-t border-foreground/20 pt-6">
-              <p className="eyebrow text-accent">{m.month}</p>
-              <h2 className="mt-3 text-3xl">{m.feel}</h2>
-              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
-                {m.happening.map((h) => <li key={h}>— {h}</li>)}
-              </ul>
-            </article>
+        <div className="mt-16 space-y-20">
+          {seasons.map((s) => (
+            <div key={s.name}>
+              <div className="relative overflow-hidden">
+                <img src={s.photo} alt={`${s.name} on the Costa de la Luz`} loading="lazy" width={1600} height={800} className="aspect-[5/2] w-full object-cover" />
+                <h2 className="absolute bottom-0 left-0 bg-background px-6 py-3 text-3xl md:text-4xl">{s.name}</h2>
+              </div>
+              <div className="mt-10 grid gap-x-10 gap-y-10 md:grid-cols-3">
+                {areaCalendar.filter((m) => s.months.includes(m.month)).map((m) => (
+                  <article key={m.month} className="border-t border-foreground/20 pt-6">
+                    <p className="eyebrow text-accent">{m.month}</p>
+                    <h3 className="mt-3 text-2xl">{m.feel}</h3>
+                    <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                      {m.happening.map((h) => <li key={h}>— {h}</li>)}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
         <div className="mt-20 text-center">

@@ -1,6 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { areaGuide } from "@/lib/area-guide";
+import barrosa from "@/assets/area-la-barrosa.jpg";
+import sancti from "@/assets/area-sancti-petri.jpg";
+import chiclana from "@/assets/area-chiclana.jpg";
+import roche from "@/assets/area-roche.jpg";
+import conil from "@/assets/area-conil.jpg";
+import jerez from "@/assets/area-jerez.jpg";
+
+const photos: Record<string, string> = {
+  "La Barrosa": barrosa,
+  "Sancti Petri": sancti,
+  Chiclana: chiclana,
+  Roche: roche,
+  "Conil de la Frontera": conil,
+  "Cádiz & Jerez": jerez,
+};
 
 export const Route = createFileRoute("/area-guide")({
   head: () => ({
@@ -29,6 +44,7 @@ function AreaGuidePage() {
         <div className="mt-16 grid gap-x-12 gap-y-16 md:grid-cols-2">
           {areaGuide.map((a) => (
             <article key={a.place} className="border-t border-foreground/20 pt-6">
+              <img src={photos[a.place]} alt={a.place} loading="lazy" width={1280} height={864} className="mb-6 aspect-[3/2] w-full object-cover" />
               <p className="eyebrow text-accent">{a.tagline}</p>
               <h2 className="mt-3 text-4xl">{a.place}</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">{a.text}</p>
