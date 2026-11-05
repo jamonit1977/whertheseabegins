@@ -8,6 +8,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
     <header className={`${overlay ? "absolute inset-x-0 top-0 z-20" : "border-b"} ${tone}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
         <nav className="flex shrink-0 gap-6 text-sm font-semibold uppercase md:gap-10">
+          <Link to="/area-guide" className="border-b border-current py-2 transition hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current">Area</Link>
           <Link to="/calendar" className="border-b border-current py-2 transition hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current">Calendar</Link>
           <Link to="/contact" className="border-b border-current py-2 transition hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current">Enquire</Link>
         </nav>
