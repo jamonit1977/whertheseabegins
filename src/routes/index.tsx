@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 import hero from "@/assets/hero.jpg";
 import beach from "@/assets/lifestyle-beach.jpg";
 import dining from "@/assets/lifestyle-dining.jpg";
 import sea from "@/assets/lifestyle-sea.jpg";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { Button } from "@/components/ui/button";
-import { seasonalGuide, formatNightlyRate } from "@/lib/seasonal-guide";
+import { canonical } from "@/lib/seo";
+import { seasonalGuide } from "@/lib/seasonal-guide";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,9 +19,12 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: canonical("/"),
   }),
   component: Index,
 });
+
+const delay = (seconds: number) => ({ "--delay": `${seconds}s` }) as CSSProperties;
 
 const services = [
   ["Private concierge", "One dedicated host from first enquiry to farewell, reachable at any hour."],
@@ -60,15 +65,16 @@ function Index() {
         <div className="veil absolute inset-0" />
         <SiteHeader overlay />
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-20 text-ink-foreground">
-          <p className="eyebrow fade-up text-gold">Chiclana · Roche · Costa de la Luz</p>
-          <h1 className="fade-up mt-5 max-w-4xl text-5xl leading-[1.02] md:text-8xl">
+          <p className="eyebrow fade-up text-gold" style={delay(0)}>Chiclana · Roche · Costa de la Luz</p>
+          <h1 className="fade-up mt-5 max-w-4xl text-5xl leading-[1.02] md:text-8xl" style={delay(0.25)}>
             The art of the<br /><em>Andalusian summer.</em>
           </h1>
-          <div className="fade-up mt-10 flex flex-wrap gap-4">
+          <div className="fade-up mt-10 flex flex-wrap gap-4" style={delay(0.55)}>
             <a href="#days" className="eyebrow bg-ink-foreground px-8 py-4 text-ink transition hover:bg-gold">A day with us</a>
             <Link to="/contact" className="eyebrow border border-ink-foreground/60 px-8 py-4 transition hover:border-gold hover:text-gold">Enquire</Link>
           </div>
         </div>
+        <span aria-hidden="true" className="fade-up absolute bottom-0 right-8 z-10 hidden h-16 w-px bg-ink-foreground/50 md:block" style={delay(1.1)} />
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-24 text-center md:py-32">
@@ -81,7 +87,7 @@ function Index() {
 
       <section id="days" className="mx-auto max-w-7xl space-y-24 px-6 pb-32 md:space-y-36">
         {days.map((d, i) => (
-          <article key={d.time} className="grid items-center gap-8 md:grid-cols-12 md:gap-16">
+          <article key={d.time} className="group grid items-center gap-8 md:grid-cols-12 md:gap-16">
             <div className={`overflow-hidden md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
               <img src={d.image} alt={d.alt} loading="lazy" width={1024} height={1024} className="aspect-[4/3] w-full object-cover transition duration-[1500ms] group-hover:scale-105" />
             </div>
@@ -109,6 +115,18 @@ function Index() {
         </div>
       </section>
 
+      <section className="bg-ink text-ink-foreground">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 px-6 py-12">
+          <div>
+            <p className="eyebrow text-gold">2 August 2027</p>
+            <h2 className="mt-3 max-w-2xl text-3xl md:text-5xl">A total solar eclipse crosses the Cádiz coast.</h2>
+          </div>
+          <Link to="/eclipse" className="eyebrow border border-ink-foreground/60 px-8 py-4 transition hover:border-gold hover:text-gold">
+            See the eclipse stay
+          </Link>
+        </div>
+      </section>
+
       <section id="seasonal-guide" className="mx-auto max-w-7xl px-6 py-24 md:py-32" aria-labelledby="seasonal-heading">
         <div className="grid gap-6 md:grid-cols-2 md:items-end">
           <div>
@@ -123,7 +141,10 @@ function Index() {
               <p className="eyebrow text-accent">{season.name}</p>
               <h3 className="mt-4 text-3xl">{season.mood}</h3>
               <p className="mt-4 min-h-16 text-sm leading-relaxed text-muted-foreground">{season.description}</p>
-              <p className="mt-8 font-display text-2xl">{formatNightlyRate(season.nightlyRate)}</p>
+              <p className="mt-8 border-t pt-5 font-display text-4xl">
+                €{season.nightlyRate.min} – €{season.nightlyRate.max}
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">per {seasonalGuide.rateUnit}</p>
             </article>
           ))}
         </div>

@@ -13,6 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AreaGuideRouteImport } from './routes/area-guide'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EclipseRouteImport } from './routes/eclipse'
+import { Route as LegalNoticeRouteImport } from './routes/legal-notice'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +37,39 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EclipseRoute = EclipseRouteImport.update({
+  id: '/eclipse',
+  path: '/eclipse',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalNoticeRoute = LegalNoticeRouteImport.update({
+  id: '/legal-notice',
+  path: '/legal-notice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/area-guide': typeof AreaGuideRoute
   '/calendar': typeof CalendarRoute
   '/contact': typeof ContactRoute
+  '/eclipse': typeof EclipseRoute
+  '/legal-notice': typeof LegalNoticeRoute
+  '/privacy': typeof PrivacyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/area-guide': typeof AreaGuideRoute
   '/calendar': typeof CalendarRoute
   '/contact': typeof ContactRoute
+  '/eclipse': typeof EclipseRoute
+  '/legal-notice': typeof LegalNoticeRoute
+  '/privacy': typeof PrivacyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +77,38 @@ export interface FileRoutesById {
   '/area-guide': typeof AreaGuideRoute
   '/calendar': typeof CalendarRoute
   '/contact': typeof ContactRoute
+  '/eclipse': typeof EclipseRoute
+  '/legal-notice': typeof LegalNoticeRoute
+  '/privacy': typeof PrivacyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/area-guide' | '/calendar' | '/contact'
+  fullPaths:
+    | '/'
+    | '/area-guide'
+    | '/calendar'
+    | '/contact'
+    | '/eclipse'
+    | '/legal-notice'
+    | '/privacy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/area-guide' | '/calendar' | '/contact'
-  id: '__root__' | '/' | '/area-guide' | '/calendar' | '/contact'
+  to:
+    | '/'
+    | '/area-guide'
+    | '/calendar'
+    | '/contact'
+    | '/eclipse'
+    | '/legal-notice'
+    | '/privacy'
+  id:
+    | '__root__'
+    | '/'
+    | '/area-guide'
+    | '/calendar'
+    | '/contact'
+    | '/eclipse'
+    | '/legal-notice'
+    | '/privacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +116,9 @@ export interface RootRouteChildren {
   AreaGuideRoute: typeof AreaGuideRoute
   CalendarRoute: typeof CalendarRoute
   ContactRoute: typeof ContactRoute
+  EclipseRoute: typeof EclipseRoute
+  LegalNoticeRoute: typeof LegalNoticeRoute
+  PrivacyRoute: typeof PrivacyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +151,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/eclipse': {
+      id: '/eclipse'
+      path: '/eclipse'
+      fullPath: '/eclipse'
+      preLoaderRoute: typeof EclipseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal-notice': {
+      id: '/legal-notice'
+      path: '/legal-notice'
+      fullPath: '/legal-notice'
+      preLoaderRoute: typeof LegalNoticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +180,9 @@ const rootRouteChildren: RootRouteChildren = {
   AreaGuideRoute: AreaGuideRoute,
   CalendarRoute: CalendarRoute,
   ContactRoute: ContactRoute,
+  EclipseRoute: EclipseRoute,
+  LegalNoticeRoute: LegalNoticeRoute,
+  PrivacyRoute: PrivacyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
