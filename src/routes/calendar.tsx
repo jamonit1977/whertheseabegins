@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { areaCalendar } from "@/lib/area-calendar";
+import { canonical } from "@/lib/seo";
 import winter from "@/assets/season-winter.jpg";
 import spring from "@/assets/season-spring.jpg";
 import summer from "@/assets/lifestyle-beach.jpg";
@@ -23,11 +24,21 @@ export const Route = createFileRoute("/calendar")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: canonical("/calendar"),
   }),
   component: CalendarPage,
 });
 
+const currentSeasonName = () => {
+  const month = new Date().getMonth();
+  if (month === 11 || month <= 1) return "Winter";
+  if (month <= 4) return "Spring";
+  if (month <= 7) return "Summer";
+  return "Autumn";
+};
+
 function CalendarPage() {
+  const current = currentSeasonName();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -37,9 +48,21 @@ function CalendarPage() {
         <p className="mt-6 max-w-2xl leading-relaxed text-muted-foreground">
           A month-by-month picture of Chiclana, Roche and the Costa de la Luz. Festival dates change each year — we'll confirm them when you enquire.
         </p>
+        <nav aria-label="Jump to a season" className="mt-10 flex flex-wrap gap-3">
+          {seasons.map((s) => (
+            <a
+              key={s.name}
+              href={`#${s.name.toLowerCase()}`}
+              className={`eyebrow border px-5 py-3 transition hover:border-gold hover:text-accent ${s.name === current ? "border-gold bg-secondary" : "border-foreground/20"}`}
+            >
+              {s.name}
+              {s.name === current && <span className="ml-2 normal-case tracking-normal text-muted-foreground">· now</span>}
+            </a>
+          ))}
+        </nav>
         <div className="mt-16 space-y-20">
           {seasons.map((s) => (
-            <div key={s.name}>
+            <div key={s.name} id={s.name.toLowerCase()}>
               <div className="relative overflow-hidden">
                 <img src={s.photo} alt={`${s.name} on the Costa de la Luz`} loading="lazy" width={1600} height={800} className="aspect-[5/2] w-full object-cover" />
                 <h2 className="absolute bottom-0 left-0 bg-background px-6 py-3 text-3xl md:text-4xl">{s.name}</h2>

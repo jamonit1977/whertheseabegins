@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { areaGuide } from "@/lib/area-guide";
+import { canonical } from "@/lib/seo";
 import barrosa from "@/assets/area-la-barrosa.jpg";
 import sancti from "@/assets/area-sancti-petri.jpg";
 import chiclana from "@/assets/area-chiclana.jpg";
@@ -27,6 +28,7 @@ export const Route = createFileRoute("/area-guide")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: canonical("/area-guide"),
   }),
   component: AreaGuidePage,
 });
